@@ -1,0 +1,24 @@
+version: "2"
+services:
+  node:
+    image: k00ni/docker-nodejs-environment
+    volumes:
+      # ADJUST: path to the building navigator
+      - ../building-navigator:/usr/src/app
+    ports:
+      - 8080:8080
+    links:
+      - db:db
+    # command: "/node.sh"
+
+  db:
+    image: tenforce/virtuoso:1.3.1-virtuoso7.2.4
+    environment:
+        SPARQL_UPDATE: "true"
+        DEFAULT_GRAPH: "https://behindertenverband-leipzig.de/"
+    volumes:
+        # ADJUST: path to the data dump
+        - ./data/import:/data/toLoad
+        - ./data/virtuoso:/data
+    ports:
+        - 8890:8890
