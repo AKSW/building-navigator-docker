@@ -4,7 +4,7 @@ Development docker environment for building navigator with Nodejs and [tenforce/
 
 # Setup
 
-Clone [Building Navigator](https://github.com/AKSW/building-navigator/) and this repo and download the datadump (places.n3)(https://github.com/AKSW/transform-bvl-pages-to-csv-file/blob/master/places.n3). Adjust the volume to the building navigator folder and the data dump in `docker-compose.yml`.
+Clone [Building Navigator](https://github.com/AKSW/building-navigator/) and this repo and download the datadump [places.n3](https://github.com/AKSW/transform-bvl-pages-to-csv-file). Adjust the volume to the building navigator folder and the data dump in `docker-compose.yml`.
 
 # Run
 
