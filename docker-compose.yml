@@ -1,7 +1,7 @@
 version: "2"
 services:
   node:
-    image: k00ni/docker-nodejs-environment
+    build: ./docker
     volumes:
       # ADJUST: path to the building navigator
       - ../building-navigator:/usr/src/app
@@ -9,7 +9,13 @@ services:
       - 8080:8080
     links:
       - db:db
-    # command: "/node.sh"
+    command: >
+      sh -c "npm install &&
+      webpack-dev-server \
+        --config webpack.config.js \
+        --host 0.0.0.0 \
+        --port 8080 \
+        --mode development"
 
   db:
     image: tenforce/virtuoso:1.3.1-virtuoso7.2.4
