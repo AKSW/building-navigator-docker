@@ -9,6 +9,7 @@ services:
       - 8080:8080
     links:
       - db:db
+      #- fuseki:fuseki
     command: >
       sh -c "npm install &&
       webpack-dev-server \
@@ -23,8 +24,14 @@ services:
         SPARQL_UPDATE: "true"
         DEFAULT_GRAPH: "https://behindertenverband-leipzig.de/"
     volumes:
-        # ADJUST: path to the data dump
+        # ADJUST: path to the data dump to import some data
         - ./data/import:/data/toLoad
-        - ./data/virtuoso:/data
+        # folder to virtuosos db (uncomment for persistance)
+        # - ./data/virtuoso:/data
     ports:
         - 8890:8890
+
+  #fuseki:
+  #  image: stain/jena-fuseki
+  #  ports:
+  #      - 3030:3030
